@@ -47,16 +47,5 @@ chmod +x eval_examples.sh
 
 # Development
 
-Step 1
-
-```
-One more piece of code
-```
-
-Step 2
-
-...
-
-Step N
 
 
