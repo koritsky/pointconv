@@ -3,6 +3,7 @@ FROM tensorflow/tensorflow:1.11.0-devel-gpu
 ENV HOME_PROJECT=/home/pointconv
 ENV TF_GROUPING_DIR=$HOME_PROJECT/tf_ops/grouping
 ENV TF_TEST_DIR=$TF_GROUPING_DIR/test
+ENV TF_SAMPLING_DIR=$HOME_PROJECT/tf_ops/sampling
 
 WORKDIR $HOME_PROJECT
 
@@ -31,10 +32,13 @@ RUN ln -s -f /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/
 #make cpp and cuda dependencies
 
 WORKDIR $TF_GROUPING_DIR
-RUN make -f tf_grouping_compile.sh
+RUN make all -f tf_grouping_compile.sh
 
 WORKDIR $TF_TEST_DIR
 RUN make -f compile.sh
+
+WORKDIR $TF_SAMPLING_DIR
+RUN make all -f tf_sampling_compile.sh
 
 #install dependencies
 WORKDIR $HOME_PROJECT
