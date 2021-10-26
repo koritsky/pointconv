@@ -8,5 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - uses: ricardochaves/python-lint@test
+    - 
+      name: Super-Linter
+      uses: github/super-linter@v4.8.1
