@@ -6,30 +6,40 @@ This repository contatins a refactoring of the [original PointConv repository](h
 # Quickstart
 This model uses SkаnNеt v2 dataset that is ~1.3TB. Quick start uses only one scene per train/val/test. To use more data see [Development](#Development) stage
 
-1. Build docker image 
+1. Build docker image
+
+in project directory  
 ```
-docker run --rm -it --name pointnet nahinkin/pointconv:cpu bash
+docker build -t nahinkin/pointconv:devel-gpu .
 ```
 
-2. Download data
+or pull from docker hub with name nahinkin/pointconv:devel-gpu
+
+2. Run docker image
+
+```
+docker run -it --name pointnet nahinkin/pointconv:devel-gpu
+```
+
+3. Download data
 ```
 chmod +x download_examples.sh
 ./download_examples.sh
 ```
 
-3. Preprocess data
+4. Preprocess data
 
 ```
 chmod +x preprocess_examples.sh
 ./preprocess_examples.sh
 ```
-4. Train 
+5. Train 
 ```
 chmod +x train_examples.sh
 ./train_examples.sh
 ```
 
-4. Train 
+6. Evaluate 
 ```
 chmod +x eval_examples.sh
 ./eval_examples.sh
