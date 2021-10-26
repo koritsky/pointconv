@@ -1,3 +1,6 @@
+[![GitHub Super-Linter](https://github.com/koritsky/pointconv/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
+
 # PointConv (refactoring)
 ## Introduction
 This repository contatins a refactoring of the [original PointConv repository](https://github.com/DylanWusee/pointconv) of the paper [_PointConv: Deep Convolutional Networks on 3D Point Clouds_](https://arxiv.org/abs/1811.07246). Work on this project was done as part of the Skoltech course [Foundations of Software Engeneering](https://github.com/artonson/skoltech_fse_v2021.1). 
