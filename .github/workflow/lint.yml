@@ -1,0 +1,12 @@
+name: Python Lint
+
+on: [pull_request]
+
+jobs:
+  lint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ricardochaves/python-lint@test
