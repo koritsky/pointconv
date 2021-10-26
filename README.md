@@ -53,7 +53,7 @@ chmod +x eval_examples.sh
 
 ## Development
 
-### Data
+### Data downloading
 The ScanNet dataset if taken from https://github.com/ScanNet/ScanNet. It is only allowed to use in non-commercial applications.
 
 To reproduce the results from the paper one can download the whole dataset with help of `scannet/download-scannet.py`
@@ -61,14 +61,20 @@ Scan data is named by scene\[spaceid]\_[scanid], or scene%04d_%02d, where each s
 
 To download the entire ScanNet release (~1.3TB):
 ```
-test/download-scannet.py -o [directory in which to download]
+test/download-scannet.py -o <directory in which to download>
 ```
 To download a specific scan (e.g., scene0000_00): 
 ```
-download-scannet.py -o [directory in which to download] --id scene0000_00
+download-scannet.py -o <directory in which to download> --id scene0000_00
 ```
 
 Train/test splits are given in the main ScanNet project repository: https://github.com/ScanNet/ScanNet/tree/master/Tasks/Benchmark
 
-
+### Data preprocessing
+To preprocess data one need to run:
+```
+cd scannet
+python scannetv2_seg_dataset_rgb21c_pointid.py --root <path to downloaded dataset> --is_example False
+```
+This script would look for files in `<path to downloaded dataset>` based on scene titles in `scannet/scannetv2_{train,val,test}.txt`. The result would be `scannet/scannet_{train,val,test}_rgb21c_pointid.pickle` files respectively.
 
