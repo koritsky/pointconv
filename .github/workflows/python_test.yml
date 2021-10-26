@@ -22,4 +22,4 @@ jobs:
           pip install numpy
           pip install nibabel
       - name: Run tests with pytest
-        run: tests/compute_area_test.py
+        run: python -m unittest tests/compute_area_test.py
