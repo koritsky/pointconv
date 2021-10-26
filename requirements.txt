@@ -1,3 +1,4 @@
 plyfile
 opencv-python==4.2.0.32
 imageio==2.6.0
+nipy
