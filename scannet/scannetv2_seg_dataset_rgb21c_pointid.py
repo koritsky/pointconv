@@ -5,6 +5,7 @@ Author: Wenxuan Wu
 Date: July 2018
 """
 
+import argparse
 import os
 import sys
 import numpy as np 
@@ -31,12 +32,15 @@ def gen_label_map():
     print(label_map)
     return label_map
 
-def gen_pickle(split = "val", root = "DataSet/Scannet_v2"):
+def gen_pickle(split = "val", root = "DataSet/Scannet_v2", is_example=True):
     if split == 'test':
         root = root + "/scans_test"
     else:
         root = root + "/scans"
-    file_list = "scannetv2_%s.txt"%(split)
+    if is_example:
+        file_list = "scannetv2_%s_example.txt"%(split)
+    else:
+        file_list = "scannetv2_%s.txt"%(split)
     with open(file_list) as fl:
         scene_id = fl.read().splitlines()
     
@@ -78,14 +82,16 @@ def gen_pickle(split = "val", root = "DataSet/Scannet_v2"):
     pickle_out.close()
 
 if __name__ =='__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--root', type=str, default="data", help='Path to the scannet v2 dataset')
+    parser.add_argument('--is_example', type=bool, default=True, help='whether to use example testsets')
+    
+    root = parser.parse_args().root
+    is_example = parser.parse_args().is_example
 
-    root = "/media/wenxuan/Large/DataSet/Scannet_v2" #modify this path to your Scannet v2 dataset Path
-    gen_pickle(split = 'train', root = root)
-    gen_pickle(split = 'val', root = root)
-    gen_pickle(split = 'test', root = root)
+    # root = "/media/wenxuan/Large/DataSet/Scannet_v2" #modify this path to your Scannet v2 dataset Path
+    gen_pickle(split = 'train', root = root, is_example=is_example)
+    gen_pickle(split = 'val', root = root, is_example=is_example)
+    gen_pickle(split = 'test', root = root, is_example=is_example)
 
     print('Done!!!')
-
-    
-
-
